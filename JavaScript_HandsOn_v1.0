@@ -1,0 +1,999 @@
+
+
+Element(html ,body,table usually tags) and Text Nodes(child of the element node)
+
+Document - Root of the tree (html) 
+Head and body - 
+.childnodes - access the child nodes
+Ex; node.childnodes[x] , node.childnodes[x].childnodes[y]
+
+Accessing child nodes(alternative)
+
+getElementById
+getElementByTagNumber
+getElementByClassName
+
+Attribute
+
+
+===============================
+
+<html>
+     <body>
+         <h1 id="heading">welcome to the grand world of  HTML</h1>
+         <p> HTML</p>
+         <p1>test</p1>
+         <script>
+             console.log(document);
+             console.log(document.head);
+             console.log(document.body);
+             console.log(document.body.childNodes);
+             console.log(document.body.childNodes[1]);
+             console.log(document.body.childNodes[1].childNodes);
+             console.log(document.body.childNodes[5].childNodes[0]);
+         </script>
+     </body>
+</html>
+
+=================================
+
+<html>
+     <body>
+         <h1 id="heading">welcome to the grand world of  HTML
+             <a class="header - link" href="#">Link 1</a>
+             <a class="header - link" href="#">Link 2</a>
+             <a class="header - link" href="#">Link 3</a>
+         </h1>
+         <p> HTML</p>
+         <p1>test</p1>
+         <f1 id="footer">
+             <a class="footer - link" href="#">Link 4</a>
+             <a class="footer - link" href="#">Link 5</a>
+             <a class="footer - link" href="#">Link 6</a>
+         </f1>
+         <script>
+             console.log(document);
+             console.log(document.head);
+             console.log(document.body);
+             console.log(document.body.childNodes);
+             console.log(document.body.childNodes[1]);
+             console.log(document.body.childNodes[1].childNodes);
+             console.log(document.body.childNodes[5].childNodes[0]);
+             console.log(document.getElementById('heading'));
+             console.log(document.getElementsByTagName('P1'));
+             console.log)document.getElementsByClassName('footer - link');
+         </script>
+     </body>
+</html>
+
+======================================
+
+<html>
+     <body>
+         <table id="nums"><</table>
+         <script>
+            function createCell(text){
+            var cell = document.createElement('td');
+             row.appendChild(cell);
+             var text = document.createTextNode(text);
+             cell.appendChild(text);
+             return cell;
+            }
+            
+             var row = document.createElement('tr');
+             var table = document.getElementById('nums');
+             table.appendChild(row);
+             row.appendChild(createCell('1'));
+             row.appendChild(createCell('2'));
+             
+         </script>
+     </body>
+</html>\
+=
+
+
+================================
+
+<html>
+     <body>
+         <table id="nums"><</table>
+         <button id="generate"> Generate</button>
+         <script>
+            function createCell(text){
+            var cell = document.createElement('td');
+             row.appendChild(cell);
+             var text = document.createTextNode(text);
+             cell.appendChild(text);
+             return cell;
+            }
+            
+             function generateTable() {
+                                 
+             var row = document.createElement('tr');
+             var table = document.getElementById('nums');
+             table.appendChild(row);
+             row.appendChild(createCell('1'));
+             row.appendChild(createCell('2'));
+             )
+             
+             var button = document.getElementById('generate');
+             button.addEventListener('click',generateTable);
+             
+         </script>
+     </body>
+</html>
+
+===================
+
+
+
+<!doctype html>
+<html>
+    <body>
+        <input id="num" type="text"></input>
+        <button id="generate">Generate</button>
+        <table id="mathtable" border="1"></table>
+        <script>
+        function createCell(text) {
+            var cell = document.createElement('td');
+            cell.appendChild(document.createTextNode(text));
+           
+            return cell;
+        }
+        function generateTable() {
+            var num = document.getElementById('num').value;
+            var table = document.getElementById('mathtable');
+            table.innerHTML = '';
+            table.style.fontsize = '50px';
+            table.style.backgroundColor = 'gold';
+            for(var i = 1; i <= 10; i++) {
+                var row = document.createElement('tr');
+                row.appendChild(createCell(num));
+                row.appendChild(createCell(i));
+                row.appendChild(createCell(i*num));
+                table.appendChild(row);
+                if (i%2==0) { row.style.backgroundColor = 'gold'; }
+                else { row.style.backgroundColor = 'green' ; }
+            }
+        }
+        var generateButton = document.getElementById('generate');
+        generateButton.addEventListener('click', generateTable);
+        
+        
+            
+        </script>
+    </body>
+</html>
+
+
+=========================================
+
+jQuery
+
+1. Concise
+2. Cross Browser
+3. Plugin / Community Element
+-- wrapper of javascript
+-- compressed library code - used in production
+-- YUICompressor to compress the javascript code
+-- Read jquery using uncompressed version
+-- Map file + compressed file = Uncompressed file
+-- cdnjs.com  -- Rare or cdn version not available
+-- jQuery == $
+-- ID , element , class selector - $( selector)
+-- Combinators -- Get descendands of given element id 
+-- $(selector).Operation
+Ex: $(selector).css(Property,value)
+-- noConflict - to remove $ variable usage
+-- element.event(handler)
+-- Contenteditable
+--mdn css reference -- jquery Selection
+
+--A>B -- direct childeren of A
+-- A B -- descendants of A
+
+-- API Documentation link - jQuery  Manipulation
+
+-- .Wrap , .html , .prepand, .prepandTo, 
+-- .text better than .html for security purpose.
+--  Ajax call receiving the html response will be captured using the .html
+-- detach the elements and attach in the different locations
+-- clone - creates exact replicat ... independendent of each other
+
+-- setting , removing attribute
+.attr(key,value)
+.attr(key)
+.removeattr(key)
+
+css brodly classified 
+ -- layout
+ -- setting up the color , background color , 
+  ex: .css(key,name) -- setting, .css(key) -- Retrieving
+-- .css({
+color :
+backgroundcolor :
+})  
+
+-- .addclass, .removeClass -- set multiple class names on same element
+-- .toggle.class
+
+-- Css box model -- Using percentage and grid
+-- Foundation and Bootstap libraries to design responsive layout
+-- .width , .height , .innerWidth , .innerHeight , .outerWidth(true) , .outerHeight(true)
+
+
+-- Flex box (25%:75% representated as 1:3 -- row or column arrangement
+
+--Event bubbling -- child to parent events are triggered....
+Info: msdn - event listener 
+command : addeventListener
+
+--jQuery doesn't work with capture since IE only supports bubble...
+
+-- CSS3 -- Transforms and Transitions
+
+d3js.org
+impress.js
+
+--callback used for asynchronous effect .. Waiting for the event to complete
+
+-- closure : Inner query has access to the outer query variables after completion...
+
+-- plugins : Extended functionality -- $.fn.extend ({ <function_name: function(){} });
+ jqueryui.com
+ 
+ 
+-- jQuery()
+-- jQuery.fn 
+
+-- Underscore.js
+
+-- Resources 
+
+ The javascript programming language
+ Advanced javaScript
+ 
+ 
+ -- XMLHTTP request is same as http request..
+ 
+ --JSONP and Oauth protocol for accesing different domain..
+ 
+ -- Things to look for in future....
+ 1.  php used to create the template to convert data into html
+ 2.  mustache template 
+ 3.  2 way data binding..(backbone.js, mvc , knockout , angular , knockback
+ 4.  DataTables , autoset widgets,jQuery plugins
+ 5.  source code for libraies - Underscore.js
+ 6.  
+ 
+ Contacts : 
+ 
+ jnaapti.com/contact/
+ 
+
+
+===============================
+
+
+<!doctype html>
+<html>
+    <body>
+    <head><script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+            </head>
+       
+        <script>
+        console.log(jQuery == $)
+        </script>
+    </body>
+</html>
+
+================================
+
+
+<html>
+     <head>
+     <script src="http://code.jquery.com/jquery-1.10.1.min.js">
+     </head>
+     
+     <body>
+         <div id="header">
+             <a class="header - link" href="#">Link 1</a>
+             <a class="header - link" href="#">Link 2</a>
+             <a class="header - link" href="#">Link 3</a>
+         </div>
+         
+         <div id="footer">
+             <a class="footer - link" href="#">Link 4</a>
+             <a class="footer - link" href="#">Link 5</a>
+             <a class="footer - link" href="#">Link 6</a>
+         </div>
+         <script>
+    
+            console.log($('#header'));
+            console.log($('#footer'));
+            console.log($('a'));
+            console.log($('.header - link'));
+            console.log($('#header a'));
+         </script>
+     </body>
+</html>
+
+=================================
+
+<html>
+     <head>
+     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+     </head>
+     
+     <body>
+         <div id="header">
+             <a class="header - link" href="#">Link 1</a>
+             <a class="header - link" href="#">Link 2</a>
+             <a class="header - link" href="#">Link 3</a>
+         </div>
+         
+         <div id="footer">
+             <a class="footer - link" href="#">Link 4</a>
+             <a class="footer - link" href="#">Link 5</a>
+             <a class="footer - link" href="#">Link 6</a>
+         </div>
+         <script>
+    
+            console.log($('#header'));
+            console.log($('#footer'));
+            console.log($('a'));
+            console.log($('.header - link'));
+            console.log($('#header a'));
+            $('a')
+            .css('color','green')
+            .css('font-size','20px');
+         </script>
+     </body>
+</html>
+
+=================================
+
+<html>
+     <head>
+     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+     </head>
+     
+     <body>
+        <table id="nums"> </table>
+         <script>
+    
+         /*   var row = $('<tr/>');
+            var cell = $('<td/>');
+            cell.text('1');
+            row.append(cell);
+            $(''#nums').append(row); */
+            
+            $('<tr/>')
+            .append($('<td/>').text('1'))
+            .appendTo('#nums');
+            
+         </script>
+     </body>
+</html>
+================================
+
+<!doctype html>
+<html>
+     <head>
+     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+     </head>
+     
+     <body>
+        <table id="nums"> </table>
+         <script>
+    
+         /*   var row = $('<tr/>');
+            var cell = $('<td/>');
+            cell.text('1');
+            row.append(cell);
+            $(''#nums').append(row); */
+            
+        var num =9
+        
+        for (i=0;i<=10;i++)
+        {
+            $('<tr/>')
+            .append($('<td/>').text(num))
+            .append($('<td/>').text(i))
+            .append($('<td/>').text(num*i))
+            .appendTo('#nums');
+       
+       if(i % 2 == 0)
+        $('td')
+         .css('color','gold')
+         else
+         .css('color','green');
+                
+        }
+           
+         </script>
+     </body>
+</html>
+
+============================
+
+<!doctype html>
+<html>
+     <head>
+     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+     </head>
+     
+     <body>
+        <input type="text" id="input"></input>
+        <button id="generate">Generate</button>
+                
+        <table id="nums"> </table>
+         <script>
+    
+         /*   var row = $('<tr/>');
+            var cell = $('<td/>');
+            cell.text('1');
+            row.append(cell);
+            $(''#nums').append(row); */
+            
+        $('#generate').click(generateTable);
+        
+        function generateTable(){
+            
+        var num = $(#input).val();
+        $('#nums').empty();
+        
+        for (i=0;i<=10;i++)
+        {
+            $('<tr/>')
+            .append($('<td/>').text(num))
+            .append($('<td/>').text(i))
+            .append($('<td/>').text(num*i))
+            .appendTo('#nums');
+       
+       if(i % 2 == 0)
+        $('td')
+         .css('color','gold')
+         else
+         .css('color','green');
+                
+        }
+        }    
+         </script>
+     </body>
+</html>
+
+===============================
+
+<!doctype html>
+<html>
+     <head>
+     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+     </head>
+     
+     <body>
+        <input type="text" id="input"></input>
+        <button id="generate">Generate</button>
+                
+        <table id="nums"> </table>
+         <script>
+    
+         /*   var row = $('<tr/>');
+            var cell = $('<td/>');
+            cell.text('1');
+            row.append(cell);
+            $(''#nums').append(row); */
+            
+        $('#generate').click(generateTable);
+        
+        function generateTable(){
+            
+        var num = $(#input).val();
+        $('#nums').empty();
+        
+        for (i=0;i<=10;i++)
+        {
+            $('<tr/>')
+            .append($('<td/>').text(num))
+            .append($('<td/>').text(i))
+            .append($('<td/>').text(num*i))
+            .appendTo('#nums');
+       
+       if(i % 2 == 0)
+        $('td')
+         .css('color','gold')
+         else
+         .css('color','green');
+                
+        }
+        }    
+         </script>
+     </body>
+</html>
+
+========================
+
+
+<!doctype html>
+<html>
+     <head>
+     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+     </head>
+     
+     .odd {
+     background-color: orange;
+     }
+     
+     .even{
+     background-color: gold;
+     }
+     
+     <body>
+       <table></table>
+       
+       <button> Toggle</button>
+       
+         <script>
+    
+        $('<tr/>')
+        .addClass('odd')
+        .append($('<td/>').text('Hello'))
+        .appendTo('table');
+        
+        $('<td/>')
+        .addClass('even');
+        .append($('<td/>').text('Hello'));
+        .appendTo('table');
+        
+        $('button').click(function () {
+            $('tr').toggleclass('odd').toggleclass('even')
+            })
+        
+         </script>
+     </body>
+</html>
+
+============================
+
+<!doctype html>
+<html>
+     <head>
+     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+     </head>
+     
+    
+    <style>
+    
+    #header{
+     height: 10 px;   
+     background-color: gold
+     ;
+        
+    }
+        
+    #footer{
+        
+        height:10 px;
+        background-color: orange;        
+    }
+        
+        
+    </style>
+         
+     <body>
+       <div> id="header"></div>
+       <div> id="Content"</div>
+       <div> id="footer"</div>
+       
+       
+         <script>
+    
+        $(document).ready(function(){
+            $('#content').height(
+                window.innerHeight - 
+                (
+                    $('#header').outerHeight() +
+                    $('#footer').outerHeight()
+                    )
+                
+               );
+               $('#content').width(window.innerWidth)
+            
+            })
+         </script>
+     </body>
+</html>
+
+=================================
+
+<!doctype html>
+<html>
+     <head>
+     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+     </head>
+     
+    
+    <style>
+    
+    #header {
+     height: 10 px;   
+     background-color: gold ;
+        
+    }
+        
+    #footer {
+        
+        height:10 px;
+        background-color: orange;        
+    }
+        
+        
+    </style>
+         
+     <body>
+       <div id="header"></div>
+       <div id="Content"></div>
+       <div id="footer"></div>
+       
+       
+         <script>
+    
+        $(document).ready(function(){
+            $('#content').height(
+                window.innerHeight - 
+                (
+                    $('#header').outerHeight() +
+                    $('#footer').outerHeight()
+                    )
+                
+               );
+               $('#content').width(window.innerWidth)
+            
+            })
+         </script>
+     </body>
+</html>
+============================================
+
+<!doctype html>
+<html>
+     <head>
+     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+     </head>
+     
+          
+     <body>
+      <input type=""></input>
+      <div></div>
+      
+       
+       
+         <script>
+    
+        $('input').keypress(function(evt){
+            
+            if(evt.which == 13)
+              $('div').text($('input').val())
+            ;})
+         </script>
+     </body>
+</html>
+
+==========================
+
+<!doctype html>
+<html>
+     <head>
+     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+     </head>
+     
+          
+     <body>
+      <input type=""></input>
+      <div></div>
+      
+       
+       
+         <script>
+    
+        $('input').keypress(function(evt){
+            
+            if(evt.which == 13)
+              $(this).css.('box-shadow', '0 0 5px red')            ;
+              })
+         </script>
+     </body>
+</html>
+
+===================================
+
+<!doctype html>
+<html>
+     <head>
+     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+     </head>
+     
+          
+     <body>
+     
+    <a href="www.google.com" target="_blank">Google</a>         
+       
+      
+    <script>
+        $('a').click(function change(){
+            $('this')
+            .attr('href','http://www.gmail.com')
+            
+        });
+       
+    </script>
+     </body>
+</html>
+
+===================================
+
+<!doctype html>
+<html>
+     <head>
+     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+     </head>
+              
+     <body>
+     <input type=""></input>
+           
+    <script>
+	$(document).ready(function(){
+        $('input').focusin(function(){
+$(this).addClass('expanded');
+});
+
+ $('input').focusout(function(){
+$(this).addClass('expanded');
+});
+		
+    
+	}	
+    </script>
+     </body>
+</html>
+
+==============================
+
+
+<!doctype html>
+<html>
+     <head>
+     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+     </head>
+     <style>
+         
+        #content{
+         
+         background-color:gold;
+        }
+        
+        #modal{
+            background-color:red;
+            height: 10 px;
+            width : 10 px;
+            z-index:100;
+        }
+         
+     </style>
+          
+     <body>
+     
+    <div id = "content"> Hello.............</div>
+    
+    <div id = "modal"> Chottu</div>
+      
+    <script>
+    
+    $(document).ready(function(){
+        
+                
+        $('#content')
+        .height(window.innerHeight);
+        $('#content').width(window.innerWidth);
+        
+        })
+    
+    $(this).click(function callchootu(){
+            
+            $('#content').dialog("open");
+            
+        /*$('#modal').style.zindex="1";*/
+            
+        }) 
+       
+       
+    </script>
+     </body>
+</html>
+
+=======================================
+
+<!doctype html>
+<html>
+     <head>
+     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+     </head>
+<style>
+    
+    #redbox {
+        height: 100px;
+        width: 100px;
+        background-color:green;
+    
+</style>    
+          
+     <body>
+     
+    <div id = "redbox"> </div>
+    
+    <button id="hide">hide</button>
+    <button id="show">show</button>
+      
+    <script>
+    
+   $('#hide').click(function(){
+       
+       $('#redbox').hide();
+   })
+   
+   $('#show').click(function(){
+       
+       $('#redbox').show();
+   })
+       
+    </script>
+     </body>
+</html>
+
+========================================
+
+<!doctype html>
+<html>
+     <head>
+     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+     </head>
+<style>
+    
+    #redbox {
+        height: 100px;
+        width: 100px;
+        background-color:green;
+    
+</style>    
+          
+     <body>
+     
+    <div id = "redbox"> </div>
+    
+    <button id="hide">hide</button>
+    <button id="show">show</button>
+    <button id="move">move</button>
+      
+    <script>
+    
+   $('#hide').click(function(){
+       
+     /*  $('#redbox').fadeOut();*/
+     $('#redbox').slideUp(1000);
+     
+         
+     })
+   })
+   
+   $('#show').click(function(){
+       
+    /*   $('#redbox').fadeIn();*/
+     
+     $('#redbox').slideDown(1000);
+   })       
+       
+       $('#move').click(function(){
+       
+    /*   $('#redbox').fadeIn();*/
+     
+     $('#move').click(function(){
+         $('#redbox').animate({
+         'margin left': '100px'
+   },1000);
+     })
+    </script>
+     </body>
+</html>
+
+=============================================================
+============================================================
+function foo(x) {
+function foo(x){
+function bar(y){
+return x+y;
+}
+return bar };
+var p=foo(2)
+p
+p(5)
+p(7)
+var obj ={}
+obj.hello= function() {
+console.log("hello);
+]
+obj.hello()
+obj.hello= function() {
+console.log("hello");
+}
+obj.hello();
+obj.name='Raju"
+oobj.hello= function() {
+console.log("hello"+this.name);
+}
+obj.hello();
+obj.hello= function() {
+console.log("hello"+this.name);
+}
+obj.hello();
+obj.name='Raju'
+obj.hello();
+type(jQuery)
+typeof(jQuery)
+function constructor() { };
+constructor.prototype
+function Constructor() { };
+Constructor.prototype
+Constructor.prototype.hello = function() { console.log('hello')};
+Constructor.prototype
+var obj1 = new Constructor
+obj1.place
+obj1.hello();
+var obj2 = new Constructor
+obj2.age = 27;
+obj1.name = "Raju";
+obj1.name = 'Vivek';
+obj1.name
+obj1.age
+obj2.age
+obj2.place
+obj1.place = "Bangalore"
+obj2.place
+obj1.prototype ='Bangalore'
+obj1.prototype.place='nelamanga'
+obj2.name
+obj2.place
+Constructor.prototype.place = 'Bangalore'
+obj1.place
+obj2.place
+Constructor.prototype.hello=function ) { console.log("Hello World")};
+obj1.hello();
+obj1.place ='nnnnnn';
+obj1.place
+obj2.place
+delete obj2.place;
+obj2.place
+delte obj1.place;
+delete obj1.place
+obj1.place
+function Person(name) { this.name = name};
+varp = Person("Raju");
+var p = Person("Raju");
+p.name
+p.name
+var p= Person('raju');
+p.name
+var p = new Person('Raju');
+p
+p.name
+function mail(){
+};
+function htmlmail(){};
+htmlmail.prototype = new mail;
+mail.prototype.sendmail=function() { console.log('sent mail')};
+var simplemail= new mail;
+simplemail.sendmail();
+htmlmail.prototype.sendmail();
+var hmail = new htmlmail;
+hmail.prototype.sendmail();
+hmail.prototype = new mail;
+hmail.sendmail();
